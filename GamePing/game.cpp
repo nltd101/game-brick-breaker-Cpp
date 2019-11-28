@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "game.h"
-//fedhfslhflrd
-//feahfjhlfsrhglsr
+//Di an com
 Game::Game()
 	:mWindow(sf::VideoMode(gameWidth, gameHeight, 32), "PongGame", sf::Style::Titlebar | sf::Style::Close)
 {
