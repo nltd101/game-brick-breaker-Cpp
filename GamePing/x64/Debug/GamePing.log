@@ -1,0 +1,10 @@
+﻿  pch.cpp
+  ball.cpp
+  Brick.cpp
+  game.cpp
+  GamePing.cpp
+  menu.cpp
+  paddle.cpp
+  pauseMessage.cpp
+  Generating Code...
+sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'

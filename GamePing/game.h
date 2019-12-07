@@ -8,6 +8,8 @@
 #include <string>
 #include <cstdlib>
 #include <cmath>
+#include "Brick.h"
+
 using namespace sf;
 
 class Game
@@ -32,6 +34,17 @@ public:
 	bool isPlaying;
 	bool isFirstTime;
 	int mode = 0;
+	int positionBrick[10][10] =
+{ {1,0,1,1,0,0,0,0,0,0},
+ {1,1,1,1,1,1,1,1,1,1},
+ {1,1,1,1,1,1,1,1,1,1},
+ {1,1,1,1,1,1,1,1,1,1},
+ {1,1,1,1,1,1,1,1,1,1},
+ {1,1,1,1,1,1,1,1,1,1},
+ {1,1,1,1,1,1,1,1,1,1},
+ {1,1,1,1,1,1,1,1,1,1},
+ {1,1,1,1,1,1,1,1,1,1},
+ {1,0,1,1,0,0,0,0,0,0} };
 	Game();
 	void run();
 private:

@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "game.h"
-//Di an com
+
 Game::Game()
 	:mWindow(sf::VideoMode(gameWidth, gameHeight, 32), "PongGame", sf::Style::Titlebar | sf::Style::Close)
 {
@@ -245,6 +245,57 @@ void Game::render()
 		mWindow.draw(left.Paddle);
 		mWindow.draw(right.Paddle);
 		mWindow.draw(pong.ball);
+		int level = 0;
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				if (positionBrick[i][j]!=0)
+				{
+					Brick brick;
+					switch (j)
+					{
+					case 0:
+						brick.BRICK.setFillColor(sf::Color(255, 144, 0));
+						break;
+					case 1:
+						brick.BRICK.setFillColor(sf::Color(255, 198, 0));
+						break;
+					case 2:
+						brick.BRICK.setFillColor(sf::Color(138, 255, 0));
+						break;
+					case 3:
+						brick.BRICK.setFillColor(sf::Color(0, 255, 10));
+						break;
+					case 4:
+						brick.BRICK.setFillColor(sf::Color(0, 192, 255));
+						break;
+					case 5:
+						brick.BRICK.setFillColor(sf::Color(0, 12, 255));
+						break;
+					case 6:
+						brick.BRICK.setFillColor(sf::Color(120, 0, 255));
+						break;
+					case 7:
+						brick.BRICK.setFillColor(sf::Color(255, 0, 84));
+						break;
+					case 8:
+						brick.BRICK.setFillColor(sf::Color(96, 57, 19));
+						break;
+					case 9:
+						brick.BRICK.setFillColor(sf::Color(0, 0, 0));
+						break;
+					default:
+						break;
+					}
+					brick.BRICK.setPosition(515 + 30 * j, 30 + 60 * i);
+					mWindow.draw(brick.BRICK);
+					
+				}
+				
+			}
+		}
+		
 	}
 
 	else
