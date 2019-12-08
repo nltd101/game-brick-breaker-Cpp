@@ -37,7 +37,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
 <<<<<<< HEAD
-<<<<<<< HEAD
     <ClInclude Include="ScoreNow.h">
 =======
     <ClInclude Include="TopHighScore.h">
@@ -47,8 +46,6 @@
 >>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
       <Filter>Header Files</Filter>
     </ClInclude>
-=======
->>>>>>> parent of 5bb202a... a
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -76,7 +73,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
 <<<<<<< HEAD
-<<<<<<< HEAD
     <ClCompile Include="ScoreNow.cpp">
 =======
     <ClCompile Include="TopHighScore.cpp">
@@ -86,7 +82,5 @@
 >>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
       <Filter>Source Files</Filter>
     </ClCompile>
-=======
->>>>>>> parent of 5bb202a... a
   </ItemGroup>
 </Project>

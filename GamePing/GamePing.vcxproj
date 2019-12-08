@@ -165,14 +165,11 @@
     <ClInclude Include="pauseMessage.h" />
     <ClInclude Include="pch.h" />
 <<<<<<< HEAD
-<<<<<<< HEAD
     <ClInclude Include="ScoreNow.h" />
 =======
     <ClInclude Include="Score.h" />
     <ClInclude Include="TopHighScore.h" />
 >>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
-=======
->>>>>>> parent of 5bb202a... a
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ball.cpp" />
@@ -189,14 +186,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
 <<<<<<< HEAD
-<<<<<<< HEAD
     <ClCompile Include="ScoreNow.cpp" />
 =======
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="TopHighScore.cpp" />
 >>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
-=======
->>>>>>> parent of 5bb202a... a
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

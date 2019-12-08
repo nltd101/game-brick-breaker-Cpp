@@ -1,5 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
 ﻿  pch.cpp
   Brick.cpp
   GamePing.cpp
@@ -12,14 +11,12 @@
 =======
 ﻿  game.cpp
 >>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
-=======
-﻿  game.cpp
->>>>>>> parent of 5bb202a... a
 D:\Game Ping\gameOOP\GamePing\game.cpp(347,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(347,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(397,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(454,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  GamePing.cpp
+  menu.cpp
+  paddle.cpp
   pauseMessage.cpp
 >>>>>>> 2e6898457a33bf41a17fc955429c51eba171e23f
   Generating Code...
