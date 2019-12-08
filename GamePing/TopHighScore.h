@@ -7,6 +7,6 @@ using namespace std;
 class TopHighScore
 {
 public:
-	string getHighScore();
+	vector<Score*> getHighScore();
 };
 

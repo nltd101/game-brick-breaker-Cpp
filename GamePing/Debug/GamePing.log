@@ -1,1 +1,4 @@
-﻿  GamePing.vcxproj -> C:\Users\user\Desktop\Năm 2\OOP\18120305_18120306\18120305_18120306\gameOOP\Debug\GamePing.exe
+﻿  TopHighScore.cpp
+C:\Users\user\Desktop\Năm 2\OOP\18120305_18120306\18120305_18120306\gameOOP\GamePing\TopHighScore.cpp(24,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\user\Desktop\Năm 2\OOP\18120305_18120306\18120305_18120306\gameOOP\GamePing\TopHighScore.cpp(31,22): warning C4018: '<': signed/unsigned mismatch
+  GamePing.vcxproj -> C:\Users\user\Desktop\Năm 2\OOP\18120305_18120306\18120305_18120306\gameOOP\Debug\GamePing.exe
