@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  game.cpp
 =======
 <<<<<<< HEAD
@@ -22,5 +23,9 @@ D:\Game Ping\gameOOP\GamePing\game.cpp(454,40): warning C4244: 'argument': conve
   GamePing.cpp
   pauseMessage.cpp
 >>>>>>> 2e6898457a33bf41a17fc955429c51eba171e23f
+=======
+﻿  GamePing.cpp
+  TopHighScore.cpp
+>>>>>>> parent of 1bbe2f4... connect serer to get high score
   Generating Code...
 sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'
