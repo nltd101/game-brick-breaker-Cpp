@@ -1,4 +1,14 @@
+<<<<<<< HEAD
 ﻿  GamePing.cpp
   TopHighScore.cpp
+=======
+﻿  game.cpp
+D:\Game Ping\gameOOP\GamePing\game.cpp(347,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Game Ping\gameOOP\GamePing\game.cpp(347,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Game Ping\gameOOP\GamePing\game.cpp(397,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Game Ping\gameOOP\GamePing\game.cpp(454,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GamePing.cpp
+  pauseMessage.cpp
+>>>>>>> 2e6898457a33bf41a17fc955429c51eba171e23f
   Generating Code...
 sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'
