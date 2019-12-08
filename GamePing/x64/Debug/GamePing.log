@@ -1,9 +1,14 @@
-﻿  game.cpp
+﻿  pch.cpp
+  Brick.cpp
+  GamePing.cpp
+  ball.cpp
+  game.cpp
 D:\Game Ping\gameOOP\GamePing\game.cpp(347,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(347,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(397,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(454,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  GamePing.cpp
+  menu.cpp
+  paddle.cpp
   pauseMessage.cpp
   Generating Code...
 sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'

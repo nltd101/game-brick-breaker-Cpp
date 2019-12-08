@@ -2,7 +2,7 @@
 #include "game.h"
 #include "SFML/Audio.hpp"
 #include <iostream>
-
+#include <sstream>
 using namespace std;
 Game::Game()
 	:mWindow(sf::VideoMode(gameWidth, gameHeight, 32), "PongGame", sf::Style::Titlebar | sf::Style::Close)
@@ -11,25 +11,12 @@ Game::Game()
 	AITime = sf::seconds(0.1f);
 	paddleSpeed = 400.f;
 	rightPaddleSpeed = 0.f;
-	ballSpeed = 100.f;
+	ballSpeed = 300.f;
 	ballAngle = 0.f;
 	increase = 40.f;
 	pi = 3.14159f;
 	//pi = 10.05f;
 	isFirstTime = true;
-}
-
-void Game::run()
-{
-	mWindow.setVerticalSyncEnabled(true);
-	isPlaying = false;
-	std::srand(static_cast<unsigned int>(std::time(NULL)));
-	while (mWindow.isOpen())
-	{
-		processEvents();
-		update(mode);
-		render();
-	}
 }
 void Game::update(int mode)
 {
@@ -133,7 +120,6 @@ void Game::update(int mode)
 		if (mode == 0)
 		{
 			float deltaTime = clock.restart().asSeconds();
-
 			// Move the player's paddle
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) &&
@@ -146,29 +132,8 @@ void Game::update(int mode)
 			{
 				left.Paddle.move(paddleSpeed * deltaTime, 0.f);
 			}
-			/*if (((rightPaddleSpeed < 0.f) && (right.Paddle.getPosition().y - paddleSize.y / 2 > 5.f)) ||
-				((rightPaddleSpeed > 0.f) && (right.Paddle.getPosition().y + paddleSize.y / 2 < gameHeight - 5.f)))
-			{
-				right.Paddle.move(0.f, rightPaddleSpeed * deltaTime);
-			}*/
-			//update ai
-			/*if (AITimer.getElapsedTime() > AITime)
-			{
-				AITimer.restart();
-				if (pong.ball.getPosition().y + pong.ballRadius > right.Paddle.getPosition().y + paddleSize.y / 2)
-					rightPaddleSpeed = paddleSpeed;
-				else if (pong.ball.getPosition().y - pong.ballRadius < right.Paddle.getPosition().y - paddleSize.y / 2)
-					rightPaddleSpeed = -paddleSpeed;
-				else
-					rightPaddleSpeed = 0.f;
-			}*/
-			/*SoundBuffer buffer;
-			if (!buffer.loadFromFile("Score.wav")) {
-				std::cout << "Error:Loading Sound Effect";
-			}
-			Sound sound;
-			sound.setBuffer(buffer);
-			sound.play();*/
+			std::string out_string;
+			std::stringstream ss;
 			for (int i = 0; i < 10; i++)
 			{
 				for (int j = 0; j < 10; j++) {
@@ -186,6 +151,11 @@ void Game::update(int mode)
 								ballAngle = pi - ballAngle;
 								this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y - 0.1f);
 								positionBrick[i][j] = 0;
+								ss << score;
+								out_string = ss.str();
+								text1.scoreNow.setString(out_string);
+								out_string = "";
+								score = score + 1;
 							}
 							//cham tren gach
 							if ((this->pong.ball.getPosition().y - this->pong.ballRadius > ybrick - 10)
@@ -194,6 +164,11 @@ void Game::update(int mode)
 								ballAngle = pi - ballAngle;
 								this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y + 0.1f);
 								positionBrick[i][j] = 0;
+								ss << score;
+								out_string = ss.str();
+								text1.scoreNow.setString(out_string);
+								out_string = "";
+								score = score + 1;
 							}
 						}
 						if ((this->pong.ball.getPosition().y > ybrick - 10) && (this->pong.ball.getPosition().y < ybrick + 10))//o giua tren va duoi
@@ -205,6 +180,11 @@ void Game::update(int mode)
 								ballAngle = - ballAngle;
 								this->pong.ball.setPosition(this->pong.ball.getPosition().x - 0.1f, this->pong.ball.getPosition().y);
 								positionBrick[i][j] = 0;
+								ss << score;
+								out_string = ss.str();
+								text1.scoreNow.setString(out_string);
+								out_string = "";
+								score = score + 1;
 							}
 							//cham phai gach
 							if ((this->pong.ball.getPosition().x - this->pong.ballRadius > xbrick - 45)
@@ -213,6 +193,11 @@ void Game::update(int mode)
 								ballAngle = - ballAngle;
 								this->pong.ball.setPosition(this->pong.ball.getPosition().x - 0.1f, this->pong.ball.getPosition().y);
 								positionBrick[i][j] = 0;
+								ss << score;
+								out_string = ss.str();
+								text1.scoreNow.setString(out_string);
+								out_string = "";
+								score = score + 1;
 							}
 						}
 					}
@@ -242,7 +227,7 @@ void Game::update(int mode)
 				isPlaying = false;
 				text.message.setString("You lose!\nPress space to restart or\nescape to exit");
 				text.message.setFillColor(sf::Color::Blue);
-				ballSpeed = 100.f;
+				ballSpeed = 300.f;
 				pong.ball.setPosition((float)gameWidth / 2, gameHeight - this->pong.ballRadius - 0.1f);
 			}
 
@@ -300,6 +285,7 @@ void Game::render()
 	{
 		mWindow.draw(left.Paddle);
 		//mWindow.draw(right.Paddle);
+		mWindow.draw(text1.scoreNow);
 		mWindow.draw(pong.ball);
 		int level = 0;
 		for (int i = 0; i < 10; i++)
@@ -472,4 +458,15 @@ void Game::processEvents()
 		}
 	}
 }
-
+void Game::run()
+{
+	mWindow.setVerticalSyncEnabled(true);
+	isPlaying = false;
+	std::srand(static_cast<unsigned int>(std::time(NULL)));
+	while (mWindow.isOpen())
+	{
+		processEvents();
+		update(mode);
+		render();
+	}
+}
