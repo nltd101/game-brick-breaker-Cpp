@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <cmath>
 #include "Brick.h"
-
+#include "ScoreNow.h"
 using namespace sf;
 
 class Game
@@ -17,7 +17,8 @@ class Game
 public:
 	Ball pong;
 	paddle left;
-	//paddle right;
+	paddle right;
+	ScoreNow text1;
 	pauseMessage text;
 	sf::Clock AITimer;
 	sf::Clock clock;
@@ -34,6 +35,7 @@ public:
 	bool isPlaying;
 	bool isFirstTime;
 	int mode = 0;
+	int score = 1;
 	int positionBrick[10][10] =
 { {0,0,0,0,0,0,0,0,0,0},
  {0,0,1,0,0,0,0,1,0,0},
