@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+﻿  TopHighScore.cpp
+C:\Users\user\Desktop\Năm 2\OOP\18120305_18120306\18120305_18120306\gameOOP\GamePing\TopHighScore.cpp(24,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\user\Desktop\Năm 2\OOP\18120305_18120306\18120305_18120306\gameOOP\GamePing\TopHighScore.cpp(31,22): warning C4018: '<': signed/unsigned mismatch
+  GamePing.vcxproj -> C:\Users\user\Desktop\Năm 2\OOP\18120305_18120306\18120305_18120306\gameOOP\Debug\GamePing.exe
+=======
 ﻿  game.cpp
 D:\Game Ping\gameOOP\GamePing\game.cpp(347,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(347,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(397,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Game Ping\gameOOP\GamePing\game.cpp(454,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   GamePing.vcxproj -> D:\Game Ping\gameOOP\Debug\GamePing.exe
+>>>>>>> 2e6898457a33bf41a17fc955429c51eba171e23f

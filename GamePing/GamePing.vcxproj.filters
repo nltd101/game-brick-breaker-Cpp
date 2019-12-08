@@ -36,6 +36,19 @@
     <ClInclude Include="Brick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <ClInclude Include="ScoreNow.h">
+=======
+    <ClInclude Include="TopHighScore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+>>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> parent of 78dfced... Revert "s"
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -62,5 +75,18 @@
     <ClCompile Include="Brick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <ClCompile Include="ScoreNow.cpp">
+=======
+    <ClCompile Include="TopHighScore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+>>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> parent of 78dfced... Revert "s"
   </ItemGroup>
 </Project>
