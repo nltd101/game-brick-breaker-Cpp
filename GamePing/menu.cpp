@@ -1,7 +1,5 @@
 #include"pch.h"
 #include "menu.h"	
-#include <SFML/Network.hpp>
-#include <iostream>
 Menu::Menu()
 {
 	if (!font.loadFromFile("resources/sansation.ttf"))

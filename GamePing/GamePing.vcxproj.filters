@@ -36,14 +36,7 @@
     <ClInclude Include="Brick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="ScoreNow.h">
-=======
-    <ClInclude Include="TopHighScore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Score.h">
->>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,14 +65,7 @@
     <ClCompile Include="Brick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="ScoreNow.cpp">
-=======
-    <ClCompile Include="TopHighScore.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Score.cpp">
->>>>>>> 1bbe2f40117e1e405404aa8ffc3a77f0e97eb768
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
