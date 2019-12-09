@@ -10,6 +10,8 @@ private:
 	string name;
 	string score;
 public:
+	string get_name();
+	string get_score();
 	Score(string, string);
 	string pushScore();
 };

@@ -10,6 +10,7 @@
 #include <cmath>
 #include "Brick.h"
 #include "ScoreNow.h"
+#include "ComponentHighScore.h"
 using namespace sf;
 
 class Game

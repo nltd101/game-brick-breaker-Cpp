@@ -1,6 +1,16 @@
 #include "pch.h"
 #include "Score.h"
 
+string Score::get_name()
+{
+	return this->name;
+}
+
+string Score::get_score()
+{
+	return this->score;
+}
+
 Score::Score(string Name, string Score)
 {
 	this->name = Name;

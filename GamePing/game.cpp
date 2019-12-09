@@ -351,11 +351,20 @@ void Game::render()
 	// Display things on screen
 	mWindow.display();
 }
+void opentHighScore() {
+	ComponentHighScore component;
+	component.run();
+}
 void Game::processEvents()
 {
 	sf::Event event;
 	while (mWindow.pollEvent(event))
 	{
+		if (event.type== sf::Event::Closed)
+		
+			mWindow.close();
+			
+		
 		if ((isPlaying == false) && isFirstTime == true)
 		{
 			switch (event.type)
@@ -370,6 +379,7 @@ void Game::processEvents()
 					list.MoveDown();
 					break;
 				case sf::Keyboard::Enter:
+
 					switch (list.getPressedItem())
 					{
 					case 0:
@@ -413,6 +423,11 @@ void Game::processEvents()
 						}
 						break;
 					case 2:
+						opentHighScore();
+						break;
+					case 3:
+						break;
+					case 4:
 						mWindow.close();
 						break;
 					default:
