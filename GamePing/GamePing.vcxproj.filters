@@ -51,6 +51,9 @@
     <ClInclude Include="ListViewHighScore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IconWindows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -90,6 +93,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ListViewHighScore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IconWindows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

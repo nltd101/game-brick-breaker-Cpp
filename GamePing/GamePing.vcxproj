@@ -98,6 +98,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\user\Desktop\Năm 2\OOP\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib;D:\Game Ping\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -161,6 +162,7 @@
     <ClInclude Include="Brick.h" />
     <ClInclude Include="ComponentHighScore.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="IconWindows.h" />
     <ClInclude Include="ListViewHighScore.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="paddle.h" />
@@ -176,6 +178,7 @@
     <ClCompile Include="ComponentHighScore.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GamePing.cpp" />
+    <ClCompile Include="IconWindows.cpp" />
     <ClCompile Include="ListViewHighScore.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="paddle.cpp" />

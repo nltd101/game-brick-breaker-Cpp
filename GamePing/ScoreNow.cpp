@@ -4,13 +4,19 @@
 
 ScoreNow::ScoreNow()
 {
-	font.loadFromFile("resources/Font.ttf");
+	font.loadFromFile("resources/zorque.ttf");
+	this->scoreNow.setStyle(sf::Text::Bold);
 	this->scoreNow.setFont(font);
 	this->scoreNow.setCharacterSize(50);
-	this->scoreNow.setPosition(10.f, 350.f);
+	this->scoreNow.setPosition(600, 0);
 	this->scoreNow.setFillColor(sf::Color::Red);
+	sf::Texture texture;
+	if (!texture.loadFromFile("img/moneyicon.png"))
+	{
+	}
+	sf::Sprite sprite(texture);
+	this->iconScore =sprite;
 }
-
 
 ScoreNow::~ScoreNow()
 {
