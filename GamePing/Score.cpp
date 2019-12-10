@@ -34,11 +34,12 @@ string Score::pushScore()
 	if (response.getStatus() == sf::Http::Response::Ok)
 	{
 		// check the contents of the response
+		return response.getBody();
 		std::cout << response.getBody() << std::endl;
 	}
 	else
 	{
-		std::cout << "request failed" << std::endl;
+		return "fail";
 	}
-	return string();
+	
 }

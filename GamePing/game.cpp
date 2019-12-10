@@ -17,6 +17,7 @@ Game::Game()
 	pi = 3.14159f;
 	//pi = 10.05f;
 	isFirstTime = true;
+	isHighScore = false;
 }
 void Game::update(int mode)
 {
@@ -338,15 +339,24 @@ void Game::render()
 	}
 	else
 	{
-		if (isFirstTime == true)
+		if (isHighScore==false)
 		{
-			list.draw(mWindow);
-		}
+			if (isFirstTime == true)
+			{
+				list.draw(mWindow);
+			}
 
+			else
+			{
+				mWindow.draw(text.message);
+			}
+		}
 		else
 		{
-			mWindow.draw(text.message);
+			ListViewHighScore listView;
+			listView.draw(mWindow);
 		}
+		
 	}
 	// Display things on screen
 	mWindow.display();

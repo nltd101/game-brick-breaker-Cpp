@@ -35,6 +35,7 @@ public:
 	Menu list;
 	bool isPlaying;
 	bool isFirstTime;
+	bool isHighScore;
 	int mode = 0;
 	int score = 1;
 	int positionBrick[10][10] =

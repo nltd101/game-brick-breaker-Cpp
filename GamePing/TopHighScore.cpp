@@ -17,7 +17,7 @@ bool checkTrash(char x) {
 	return false;
 }
 
-vector<Score*> covertFromString(string S) {
+vector<Score*> convertFromString(string S) {
 	
 	vector<Score*> vt;
 	string oject;
@@ -63,17 +63,19 @@ vector<Score*> TopHighScore::getHighScore()
 	request.setBody(stream.str());
 	sf::Http http("http://nltd101.work");
 	sf::Http::Response response = http.sendRequest(request);
+	fstream f("highscore.txt", ios::out | ios::in);
 	if (response.getStatus() == sf::Http::Response::Ok)
 	{
-		return covertFromString(response.getBody());
+		
+		f << response.getBody();
+		f.close();
+		return convertFromString(response.getBody());
 	}
 	else
 	{
-		vector<Score*> vt;
-		vt.push_back(new Score("", "fail"));
-		return vt;
+		string bodyOfFile;
+		getline(f, bodyOfFile);
+		return convertFromString(bodyOfFile);
 	}
-	
-	
 }
 
