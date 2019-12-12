@@ -54,6 +54,12 @@
     <ClInclude Include="IconWindows.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Heart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -96,6 +102,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IconWindows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

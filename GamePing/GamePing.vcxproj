@@ -158,10 +158,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BackgroundInfo.h" />
     <ClInclude Include="ball.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="ComponentHighScore.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="Heart.h" />
     <ClInclude Include="IconWindows.h" />
     <ClInclude Include="ListViewHighScore.h" />
     <ClInclude Include="menu.h" />
@@ -173,11 +175,13 @@
     <ClInclude Include="TopHighScore.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackgroundInfo.cpp" />
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="ComponentHighScore.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GamePing.cpp" />
+    <ClCompile Include="Heart.cpp" />
     <ClCompile Include="IconWindows.cpp" />
     <ClCompile Include="ListViewHighScore.cpp" />
     <ClCompile Include="menu.cpp" />

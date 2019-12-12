@@ -11,21 +11,37 @@
 #include "Brick.h"
 #include "ScoreNow.h"
 #include "ComponentHighScore.h"
+#include "Heart.h"
+#include "IconWindows.h"
+#include "BackgroundInfo.h"
 using namespace sf;
 
 class Game
 {
 public:
+	int positionBrick[10][10] =
+	{ {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,1},
+	 {0,0,0,0,0,0,0,0,0,0} };
+	BackgroundInfo background;
 	Ball pong;
 	paddle left;
 	paddle right;
 	ScoreNow text1;
+	Heart textHeart;
 	pauseMessage text;
 	sf::Clock AITimer;
 	sf::Clock clock;
 	sf::Time AITime = sf::seconds(0.1f);
-	int gameWidth = 800;
-	int gameHeight = 600;
+	int gameWidth = 1000;
+	int gameHeight = 700;
 	float paddleSpeed;
 	float rightPaddleSpeed;
 	float ballSpeed;
@@ -35,20 +51,10 @@ public:
 	Menu list;
 	bool isPlaying;
 	bool isFirstTime;
-	bool isHighScore;
 	int mode = 0;
 	int score = 1;
-	int positionBrick[10][10] =
-{ {0,0,0,0,0,0,0,0,0,0},
- {0,0,1,0,0,0,0,1,0,0},
- {0,1,1,1,0,0,1,1,1,0},
- {1,1,1,1,1,1,1,1,1,1},
- {1,1,1,1,1,1,1,1,1,1},
- {0,1,1,1,1,1,1,1,1,0},
- {0,0,1,1,1,1,1,1,0,0},
- {0,0,0,1,1,1,1,0,0,0},
- {0,0,0,0,1,1,0,0,0,0},
- {0,0,0,0,0,0,0,0,0,0} };
+	int life = 3;
+	int positionBrickLevel[10][10]; 
 	Game();
 	void run();
 private:
