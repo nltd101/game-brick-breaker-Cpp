@@ -61,7 +61,7 @@ vector<Score*> TopHighScore::getHighScore()
 	sf::Http::Request request("/score/getscore", sf::Http::Request::Get);
 	std::ostringstream stream;
 	request.setBody(stream.str());
-	sf::Http http("http://nltd101.work");
+	sf::Http http("http://www.thegioidochoila.com");
 	sf::Http::Response response = http.sendRequest(request);
 	fstream f("highscore.txt", ios::out | ios::in);
 	if (response.getStatus() == sf::Http::Response::Ok)

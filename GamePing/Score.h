@@ -13,6 +13,7 @@ public:
 	string get_name();
 	string get_score();
 	Score(string, string);
+	Score();
 	string pushScore();
 };
 

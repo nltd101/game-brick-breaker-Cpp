@@ -10,12 +10,6 @@ ScoreNow::ScoreNow()
 	this->scoreNow.setCharacterSize(50);
 	this->scoreNow.setPosition(600, 0);
 	this->scoreNow.setFillColor(sf::Color::Red);
-	sf::Texture texture;
-	if (!texture.loadFromFile("img/moneyicon.png"))
-	{
-	}
-	sf::Sprite sprite(texture);
-	this->iconScore =sprite;
 }
 
 ScoreNow::~ScoreNow()

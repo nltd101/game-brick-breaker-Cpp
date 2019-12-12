@@ -17,6 +17,10 @@ Score::Score(string Name, string Score)
 	this->score = Score;
 }
 
+Score::Score()
+{
+}
+
 string Score::pushScore()
 {
 	//sf::Http::Request request("/getscore", sf::Http::Request::Post);
@@ -27,7 +31,7 @@ string Score::pushScore()
 	// encode the parameters in the request body
 	request.setBody(stream.str());
 	//cout << request+"a";
-	sf::Http http("http://nltd101.work");
+	sf::Http http("http://www.thegioidochoila.com");
 	sf::Http::Response response = http.sendRequest(request);
 
 	// check the status
