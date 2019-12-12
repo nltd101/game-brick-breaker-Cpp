@@ -7,6 +7,7 @@ class ListViewHighScore
 	int selectedItem;
 	sf::Font font;
 	vector<sf::Text*> listView;
+	sf::Text txtHighscore;
 public:
 	ListViewHighScore();
 	void draw(sf::RenderWindow& Window);
