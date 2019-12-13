@@ -38,7 +38,7 @@ void Game::update(int mode)
 			}
 			std::string out_string;
 			std::stringstream ss;
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < 9; i++)
 			{
 				for (int j = 0; j < 10; j++) {
 					if (positionBrickLevel[i][j] != 0)
@@ -54,6 +54,23 @@ void Game::update(int mode)
 							{
 								ballAngle = pi - ballAngle;
 								this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y - 0.1f);
+								item* item;
+								switch (positionBrickLevel[i][j])
+								{
+								case 2:
+									item = new HideHeart();
+									item->setPosition(50 + 90 * i, 20 + 30 * j);
+									listFaltItem.push_back(item);
+									break;
+								case 3:
+									item = new ResizePaddle();
+									item->setPosition(50 + 90 * i, 20 + 30 * j);
+									listFaltItem.push_back(item);
+									break;
+								default:
+									break;
+								}
+								
 								positionBrickLevel[i][j] = 0;
 								ss << score;
 								out_string = ss.str();
@@ -67,6 +84,23 @@ void Game::update(int mode)
 							{
 								ballAngle = pi - ballAngle;
 								this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y + 0.1f);
+								item* item;
+								switch (positionBrickLevel[i][j])
+								{
+								case 2:
+									item = new HideHeart();
+									item->setPosition(50 + 90 * i, 20 + 30 * j);
+									listFaltItem.push_back(item);
+									break;
+								case 3:
+									item = new ResizePaddle();
+									item->setPosition(50 + 90 * i, 20 + 30 * j);
+									listFaltItem.push_back(item);
+									break;
+								default:
+									break;
+								}
+
 								positionBrickLevel[i][j] = 0;
 								ss << score;
 								out_string = ss.str();
@@ -83,6 +117,23 @@ void Game::update(int mode)
 							{
 								ballAngle = - ballAngle;
 								this->pong.ball.setPosition(this->pong.ball.getPosition().x - 0.1f, this->pong.ball.getPosition().y);
+								item* item;
+								switch (positionBrickLevel[i][j])
+								{
+								case 2:
+									item = new HideHeart();
+									item->setPosition(50 + 90 * i, 20 + 30 * j);
+									listFaltItem.push_back(item);
+									break;
+								case 3:
+									item = new ResizePaddle();
+									item->setPosition(50 + 90 * i, 20 + 30 * j);
+									listFaltItem.push_back(item);
+									break;
+								default:
+									break;
+								}
+
 								positionBrickLevel[i][j] = 0;
 								ss << score;
 								out_string = ss.str();
@@ -96,6 +147,23 @@ void Game::update(int mode)
 							{
 								ballAngle = - ballAngle;
 								this->pong.ball.setPosition(this->pong.ball.getPosition().x - 0.1f, this->pong.ball.getPosition().y);
+								item* item;
+								switch (positionBrickLevel[i][j])
+								{
+								case 2:
+									item = new HideHeart();
+									item->setPosition(50 + 90 * i, 20 + 30 * j);
+									listFaltItem.push_back(item);
+									break;
+								case 3:
+									item = new ResizePaddle();
+									item->setPosition(50 + 90 * i, 20 + 30 * j);
+									listFaltItem.push_back(item);
+									break;
+								default:
+									break;
+								}
+
 								positionBrickLevel[i][j] = 0;
 								ss << score;
 								out_string = ss.str();
@@ -110,6 +178,31 @@ void Game::update(int mode)
 			// Move the ball
 			float factor = ballSpeed * deltaTime;
 			this->pong.ball.move(std::sin(ballAngle)* factor, std::cos(ballAngle)* factor);
+			for (vector<item*>::iterator i = listFaltItem.begin(); i != listFaltItem.end(); i++)
+			{
+				(*i)->move(0.f,2.f);
+				if ((*i)->getPosition().y > gameHeight - paddleSize.y)
+				{
+					if (((*i)->getPosition().x < left.Paddle.getPosition().x + paddleSize.x / 2) &&
+						((*i)->getPosition().x > left.Paddle.getPosition().x - paddleSize.x / 2))
+					{
+						switch ((*i)->getLable())
+						{
+						case 2:
+							life++;
+							break;
+						case 3: 
+							paddleSize.x += 100;
+							break;
+						default:
+							break;
+						}
+						
+					}
+					listFaltItem.erase(i);
+					break;
+				}
+			}
 			// Check collisions between the ball and the screen
 			if (this->pong.ball.getPosition().x - this->pong.ballRadius < 0.f)
 			{
@@ -137,7 +230,9 @@ void Game::update(int mode)
 				ballSpeed = 300.f;
 				pong.ball.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y - this->pong.ballRadius - 0.1f);
 				left.Paddle.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y / 2);
+				paddleSize = paddleSizeConst;
 				life = life - 1;
+				
 			}
 			if (life == 0)
 			{
@@ -173,24 +268,26 @@ void Game::render()
 {
 	mWindow.clear(Color(238, 232, 170));
 	// Draw
-	/*Texture background, heart;
-	background.loadFromFile("img/background_darknight.jpg");
-	Sprite mBackground(background);
-	mWindow.clear(Color(0, 255, 255));
-	heart.loadFromFile("img/hearticon.png");
-	Sprite mHeart(heart);
-	mHeart.setPosition(620, 20);*/
+	Sprite mHeart(hide_heart.heart);
+	mHeart.setPosition(830, 100);
+	Texture score_now;
+	score_now.loadFromFile("img/moneyicon.png");
+	Sprite mScore_now(score_now);
+	mScore_now.setPosition(830, 200);
+	left.Paddle.setSize(paddleSize);
+	left.Paddle.setOrigin(paddleSize.x / 2, paddleSize.y / 2);
 	if (isPlaying)
 	{
 		//mWindow.draw(mBackground);
-		//mWindow.draw(mHeart);
 		mWindow.draw(left.Paddle);
-		mWindow.draw(text1.scoreNow);
 		mWindow.draw(pong.ball);
-		mWindow.draw(textHeart.heart);
 		mWindow.draw(background.backgroundInfo);
+		mWindow.draw(mHeart);
+		mWindow.draw(mScore_now);
+		mWindow.draw(text1.scoreNow);
+		mWindow.draw(textHeart.heart);
 		int level = 0;
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 9; i++)
 		{
 			for (int j = 0; j < 10; j++)
 			{
@@ -227,8 +324,10 @@ void Game::render()
 						brick.BRICK.setFillColor(sf::Color(96, 57, 19));
 						break;
 					case 9:
+					{
 						brick.BRICK.setFillColor(sf::Color(0, 0, 0));
 						break;
+					}
 					default:
 						break;
 					}
@@ -236,6 +335,10 @@ void Game::render()
 					mWindow.draw(brick.BRICK);
 				}
 			}
+		}
+		for (vector<item*>::iterator i = listFaltItem.begin(); i != listFaltItem.end(); i++)
+		{
+			mWindow.draw(**i);
 		}
 	}
 	else
@@ -246,18 +349,15 @@ void Game::render()
 			}
 			else
 			{
-				//mWindow.draw(mBackground);
-				//mWindow.draw(mHeart);
-				//mWindow.draw(text.message);
 				mWindow.draw(left.Paddle);
-				mWindow.draw(background.backgroundInfo);
-				//mWindow.draw(right.Paddle);
-				mWindow.draw(textHeart.heart);
-				mWindow.draw(text1.scoreNow);
 				mWindow.draw(pong.ball);
-				
+				mWindow.draw(background.backgroundInfo);
+				mWindow.draw(mHeart);
+				mWindow.draw(mScore_now);
+				mWindow.draw(text1.scoreNow);
+				mWindow.draw(textHeart.heart);
 				int level = 0;
-				for (int i = 0; i < 10; i++)
+				for (int i = 0; i < 9; i++)
 				{
 					for (int j = 0; j < 10; j++)
 					{

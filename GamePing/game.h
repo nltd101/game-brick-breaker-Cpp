@@ -14,23 +14,25 @@
 #include "Heart.h"
 #include "IconWindows.h"
 #include "BackgroundInfo.h"
+#include "HideHeart.h"
+#include"ResizePaddle.h"
 using namespace sf;
-
 class Game
 {
 public:
 	int positionBrick[10][10] =
-	{ {1,1,1,1,1,1,1,1,1,1},
+	{ {1,1,1,1,1,1,1,1,1,3},
+	 {1,1,1,1,1,1,1,1,1,3},
+	 {1,1,1,1,1,1,1,1,1,3},
+	 {1,1,1,1,1,1,1,1,1,2},
 	 {1,1,1,1,1,1,1,1,1,1},
 	 {1,1,1,1,1,1,1,1,1,1},
+	 {1,1,1,1,1,1,1,1,1,2},
 	 {1,1,1,1,1,1,1,1,1,1},
-	 {1,1,1,1,1,1,1,1,1,1},
-	 {1,1,1,1,1,1,1,1,1,1},
-	 {1,1,1,1,1,1,1,1,1,1},
-	 {1,1,1,1,1,1,1,1,1,1},
-	 {1,1,1,1,1,1,1,1,1,1},
-	 {0,0,0,0,0,0,0,0,0,0} };
+	 {1,1,1,1,1,1,1,1,1,3}};
 	BackgroundInfo background;
+	sf::Vector2f paddleSize = paddleSizeConst;
+	HideHeart hide_heart;
 	Ball pong;
 	paddle left;
 	paddle right;
@@ -55,6 +57,7 @@ public:
 	int score = 1;
 	int life = 3;
 	int positionBrickLevel[10][10]; 
+	vector<item*>listFaltItem;
 	Game();
 	void run();
 private:

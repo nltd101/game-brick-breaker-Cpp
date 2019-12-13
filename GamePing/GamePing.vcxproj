@@ -163,13 +163,18 @@
     <ClInclude Include="Brick.h" />
     <ClInclude Include="ComponentHighScore.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="GenerateMapBaseLevel.h" />
     <ClInclude Include="Heart.h" />
+    <ClInclude Include="HideHeart.h" />
     <ClInclude Include="IconWindows.h" />
+    <ClInclude Include="item.h" />
     <ClInclude Include="ListViewHighScore.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="paddle.h" />
     <ClInclude Include="pauseMessage.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PlusPoint.h" />
+    <ClInclude Include="ResizePaddle.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="ScoreNow.h" />
     <ClInclude Include="TopHighScore.h" />
@@ -181,8 +186,11 @@
     <ClCompile Include="ComponentHighScore.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GamePing.cpp" />
+    <ClCompile Include="GenerateMapBaseLevel.cpp" />
     <ClCompile Include="Heart.cpp" />
+    <ClCompile Include="HideHeart.cpp" />
     <ClCompile Include="IconWindows.cpp" />
+    <ClCompile Include="item.cpp" />
     <ClCompile Include="ListViewHighScore.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="paddle.cpp" />
@@ -193,6 +201,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PlusPoint.cpp" />
+    <ClCompile Include="ResizePaddle.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="ScoreNow.cpp" />
     <ClCompile Include="TopHighScore.cpp" />

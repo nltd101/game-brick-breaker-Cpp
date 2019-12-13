@@ -4,8 +4,9 @@ Heart::Heart()
 {
 	font.loadFromFile("resources/Font.ttf");
 	this->heart.setFont(font);
-	this->heart.setCharacterSize(50);
-	this->heart.setPosition(500.f, 350.f);
+	this->heart.setCharacterSize(60);
+	this->heart.setStyle(sf::Text::Bold);
+	this->heart.setPosition(920, 90);
 	this->heart.setFillColor(sf::Color::Red);
 }
 

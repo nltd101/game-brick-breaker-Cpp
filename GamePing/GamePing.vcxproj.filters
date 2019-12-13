@@ -60,6 +60,21 @@
     <ClInclude Include="BackgroundInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HideHeart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizePaddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlusPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GenerateMapBaseLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -108,6 +123,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BackgroundInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HideHeart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResizePaddle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlusPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GenerateMapBaseLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
