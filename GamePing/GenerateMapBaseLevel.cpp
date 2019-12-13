@@ -5,7 +5,9 @@ GenerateMapBaseLevel::GenerateMapBaseLevel()
 }
 int GenerateMapBaseLevel::setMapLevel(int temp[9][10], int level)
 {
+
 	int countBrick = 0;
+
 	int a[7][10][9] =
 	{ {{0,0,0,0,0,0,0,0,0},
 		{0,0,0,0,0,0,0,0,0},
@@ -57,8 +59,13 @@ int GenerateMapBaseLevel::setMapLevel(int temp[9][10], int level)
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			temp[i][j] = a[level-1][j][i];
-			if (temp[i][j] != 0) countBrick++;
+
+			temp[i][j] = a[level][j][i];
+			if (temp[i][j]!=0)
+			{
+				countBrick++;
+			}
+
 		}
 	}
 	GenerateItem(temp);
