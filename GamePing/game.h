@@ -16,20 +16,14 @@
 #include "BackgroundInfo.h"
 #include "HideHeart.h"
 #include"ResizePaddle.h"
+#include "PlusPoint.h"
+#include "GenerateMapBaseLevel.h"
 using namespace sf;
 class Game
 {
 public:
-	int positionBrick[10][10] =
-	{ {1,1,1,1,1,1,1,1,1,3},
-	 {1,1,1,1,1,1,1,1,1,3},
-	 {1,1,1,1,1,1,1,1,1,3},
-	 {1,1,1,1,1,1,1,1,1,2},
-	 {1,1,1,1,1,1,1,1,1,1},
-	 {1,1,1,1,1,1,1,1,1,1},
-	 {1,1,1,1,1,1,1,1,1,2},
-	 {1,1,1,1,1,1,1,1,1,1},
-	 {1,1,1,1,1,1,1,1,1,3}};
+	int countBrick;
+	int level = 1;
 	BackgroundInfo background;
 	sf::Vector2f paddleSize = paddleSizeConst;
 	HideHeart hide_heart;
@@ -64,6 +58,7 @@ private:
 	void processEvents();
 	void update(int);
 	void render();
+	void processCollision(int ,int);
 private:
 	sf::RenderWindow mWindow;
 };

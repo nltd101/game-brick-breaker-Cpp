@@ -5,7 +5,7 @@ class GenerateMapBaseLevel
 {
 public:
 	GenerateMapBaseLevel();
-	void setMapLevel(int temp[9][10], int level);
+	int setMapLevel(int temp[9][10], int level);
 	void GenerateItem(int a[9][10]);
 };
 
