@@ -18,6 +18,7 @@
 #include"ResizePaddle.h"
 #include "PlusPoint.h"
 #include "GenerateMapBaseLevel.h"
+#include "SaveTraceBall.h"
 using namespace sf;
 class Game
 {
@@ -52,6 +53,7 @@ public:
 	int life = 3;
 	int positionBrickLevel[10][10]; 
 	vector<item*>listFaltItem;
+	SaveTraceBall shadow;
 	Game();
 	void run();
 private:
@@ -59,6 +61,7 @@ private:
 	void update(int);
 	void render();
 	void processCollision(int ,int);
+	void drawBrick();
 private:
 	sf::RenderWindow mWindow;
 };

@@ -17,7 +17,7 @@ Menu::Menu()
 	menu[1].setCharacterSize(50);
 	menu[1].setPosition(sf::Vector2f(600 / 2, 600 / (MAX_NUMBER_OF_ITEMS + 1) * 2));
 	menu[1].setFillColor(sf::Color::White);
-	menu[1].setString("2 PLAYERS");
+	menu[1].setString("MACHINE PLAYER");
 	menu[2].setFont(font);
 	menu[2].setCharacterSize(50);
 	menu[2].setPosition(sf::Vector2f(600 / 2, 600 / (MAX_NUMBER_OF_ITEMS + 1) * 3));

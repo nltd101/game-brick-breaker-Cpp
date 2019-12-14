@@ -175,6 +175,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlusPoint.h" />
     <ClInclude Include="ResizePaddle.h" />
+    <ClInclude Include="SaveTraceBall.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="ScoreNow.h" />
     <ClInclude Include="TopHighScore.h" />
@@ -203,6 +204,7 @@
     </ClCompile>
     <ClCompile Include="PlusPoint.cpp" />
     <ClCompile Include="ResizePaddle.cpp" />
+    <ClCompile Include="SaveTraceBall.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="ScoreNow.cpp" />
     <ClCompile Include="TopHighScore.cpp" />

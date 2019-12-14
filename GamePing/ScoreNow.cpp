@@ -8,7 +8,7 @@ ScoreNow::ScoreNow()
 	this->scoreNow.setStyle(sf::Text::Bold);
 	this->scoreNow.setFont(font);
 	this->scoreNow.setCharacterSize(60);
-	this->scoreNow.setPosition(900, 190);
+	this->scoreNow.setPosition(900, 240);
 	this->scoreNow.setFillColor(sf::Color::Yellow);
 }
 

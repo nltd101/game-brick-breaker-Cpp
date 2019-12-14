@@ -6,7 +6,7 @@ Heart::Heart()
 	this->heart.setFont(font);
 	this->heart.setCharacterSize(60);
 	this->heart.setStyle(sf::Text::Bold);
-	this->heart.setPosition(920, 90);
+	this->heart.setPosition(920, 140);
 	this->heart.setFillColor(sf::Color::Red);
 }
 
