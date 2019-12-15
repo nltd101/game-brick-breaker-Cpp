@@ -178,6 +178,7 @@
     <ClInclude Include="SaveTraceBall.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="ScoreNow.h" />
+    <ClInclude Include="SoundBrick.h" />
     <ClInclude Include="TopHighScore.h" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +208,7 @@
     <ClCompile Include="SaveTraceBall.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="ScoreNow.cpp" />
+    <ClCompile Include="SoundBrick.cpp" />
     <ClCompile Include="TopHighScore.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

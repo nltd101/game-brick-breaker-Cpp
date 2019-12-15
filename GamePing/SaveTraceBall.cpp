@@ -10,7 +10,7 @@ void SaveTraceBall::newMove(int x, int y, sf::RenderWindow& mwindow)
 	saveball->setOrigin(ballRadius / 2, ballRadius / 2);
 	saveball->setPosition(x, y);
 	this->listSprite.push_back(saveball);
-	if (this->listSprite.size()>5)
+	if (this->listSprite.size() > 15)
 	{
 		this->listSprite.pop_front();
 	}
@@ -19,11 +19,11 @@ void SaveTraceBall::newMove(int x, int y, sf::RenderWindow& mwindow)
 
 void SaveTraceBall::drawShadow(sf::RenderWindow& mwindow)
 {
-	int t = 8;
+	int t = 15;
 	for (auto i :this->listSprite)
 	{
 		t--;
-		i->setRadius(ballRadius - t);
+		i->setRadius(ballRadius - t-3);
 		mwindow.draw(*i);
 	}
 }

@@ -78,6 +78,9 @@
     <ClInclude Include="SaveTraceBall.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SoundBrick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -144,6 +147,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SaveTraceBall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundBrick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

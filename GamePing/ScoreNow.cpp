@@ -5,10 +5,9 @@
 ScoreNow::ScoreNow()
 {
 	font.loadFromFile("resources/zorque.ttf");
-	this->scoreNow.setStyle(sf::Text::Bold);
 	this->scoreNow.setFont(font);
-	this->scoreNow.setCharacterSize(60);
-	this->scoreNow.setPosition(900, 240);
+	this->scoreNow.setCharacterSize(50);
+	this->scoreNow.setPosition(895, 235);
 	this->scoreNow.setFillColor(sf::Color::Yellow);
 }
 

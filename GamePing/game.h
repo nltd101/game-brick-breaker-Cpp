@@ -19,10 +19,12 @@
 #include "PlusPoint.h"
 #include "GenerateMapBaseLevel.h"
 #include "SaveTraceBall.h"
+#include "SoundBrick.h"
 using namespace sf;
 class Game
 {
 public:
+	SoundBrick sound_Brick;
 	int countBrick;
 	int level = 1;
 	BackgroundInfo background;
@@ -62,6 +64,7 @@ private:
 	void render();
 	void processCollision(int ,int);
 	void drawBrick();
+	void rules_game();
 private:
 	sf::RenderWindow mWindow;
 };

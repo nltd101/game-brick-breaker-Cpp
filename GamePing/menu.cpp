@@ -27,7 +27,7 @@ Menu::Menu()
 	menu[3].setCharacterSize(50);
 	menu[3].setPosition(sf::Vector2f(600 / 2, 600 / (MAX_NUMBER_OF_ITEMS + 1) * 4));
 	menu[3].setFillColor(sf::Color::White);
-	menu[3].setString("SETTING");
+	menu[3].setString("RULES GAME");
 	menu[4].setFont(font);
 	menu[4].setCharacterSize(50);
 	menu[4].setPosition(sf::Vector2f(600 / 2, 600 / (MAX_NUMBER_OF_ITEMS + 1) * 5));
