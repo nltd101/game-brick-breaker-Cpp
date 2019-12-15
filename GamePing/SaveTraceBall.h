@@ -7,9 +7,9 @@ class SaveTraceBall
 {
 private:
 	float ballRadius = 15.f;
+	void drawShadow(sf::RenderWindow& mwindow);
 public:
 	list<sf::CircleShape*> listSprite;
 	void newMove(int ,int, sf::RenderWindow &mwindow);
-	void drawShadow(sf::RenderWindow &mwindow);
 };
 

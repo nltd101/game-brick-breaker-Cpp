@@ -7,7 +7,7 @@ Ball::Ball()
 	ball.setRadius(ballRadius);
 	//ball.setOutlineColor(sf::Color::Red);
 	ball.setFillColor(sf::Color::Red);
-	ball.setOrigin(ballRadius / 2, ballRadius / 2);
+	ball.setOrigin(ballRadius , ballRadius);
 }
 Ball::~Ball()
 {

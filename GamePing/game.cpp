@@ -107,7 +107,7 @@ void Game::update(int mode)
 			for (vector<item*>::iterator i = listFaltItem.begin(); i != listFaltItem.end(); i++)
 			{
 				(*i)->move(0.f, 2.f);
-				if ((*i)->getPosition().y > gameHeight - paddleSize.y - 2.f)
+				if ((*i)->getPosition().y > gameHeight - paddleSize.y - pong.ballRadius)
 				{
 					if (((*i)->getPosition().x < left.Paddle.getPosition().x + paddleSize.x / 2) &&
 						((*i)->getPosition().x > left.Paddle.getPosition().x - paddleSize.x / 2))
@@ -178,6 +178,7 @@ void Game::update(int mode)
 				left.Paddle.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y / 2);
 				paddleSize = paddleSizeConst;
 				life = life - 1;
+				shadow.listSprite.clear();
 			}
 			if (life == 0)
 			{
@@ -518,6 +519,7 @@ void Game::render()
 			this->pong.ball.setPosition(gameWidth / 2, gameHeight - paddleSize.y - pong.ballRadius - 0.1f);
 			ballAngle = (0.7 + ((double)(rand() % 4)) / 10) * pi;
 			ballSpeed = 300.f;
+			this->shadow.listSprite.clear();
 		}
 		for (vector<item*>::iterator i = listFaltItem.begin(); i != listFaltItem.end(); i++)
 		{
@@ -631,6 +633,7 @@ void Game::rules_game()
 	text4.setPosition(30, 530);
 	text4.setFillColor(Color::Black);
 	text4.setCharacterSize(45);
+	iconGameRules(window);
 	while (window.isOpen())
 	{
 		sf::Event event;

@@ -7,7 +7,11 @@
 using namespace std;
 class TopHighScore
 {
+private:
+	bool checkTrash(char x);
+	
 public:
 	vector<Score*> getHighScore();
+	vector<Score*> convertFromString(string S);
 };
 

@@ -4,10 +4,10 @@
 void SaveTraceBall::newMove(int x, int y, sf::RenderWindow& mwindow)
 {
 	sf::CircleShape* saveball = new sf::CircleShape;
-	saveball->setRadius(ballRadius - 3);
+	saveball->setRadius(ballRadius);
 	saveball->setOutlineThickness(0);
 	saveball->setFillColor(sf::Color::White);
-	saveball->setOrigin(ballRadius / 2, ballRadius / 2);
+	saveball->setOrigin(ballRadius, ballRadius);
 	saveball->setPosition(x, y);
 	this->listSprite.push_back(saveball);
 	if (this->listSprite.size() > 15)
@@ -23,7 +23,7 @@ void SaveTraceBall::drawShadow(sf::RenderWindow& mwindow)
 	for (auto i :this->listSprite)
 	{
 		t--;
-		i->setRadius(ballRadius - t-3);
+		i->setRadius(ballRadius - t);
 		mwindow.draw(*i);
 	}
 }

@@ -24,7 +24,7 @@
 using namespace sf;
 class Game
 {
-public:
+private:
 	MinusPaddle minus;
 	SoundBrick sound_Brick;
 	int countBrick;
@@ -58,15 +58,14 @@ public:
 	int positionBrickLevel[10][10]; 
 	vector<item*>listFaltItem;
 	SaveTraceBall shadow;
-	Game();
-	void run();
-private:
+	sf::RenderWindow mWindow;
 	void processEvents();
 	void update(int);
 	void render();
 	void processCollision(int ,int);
 	void drawBrick();
 	void rules_game();
-private:
-	sf::RenderWindow mWindow;
+public:
+	Game();
+	void run();
 };

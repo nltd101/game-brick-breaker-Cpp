@@ -6,15 +6,11 @@
 class ComponentHighScore
 {
 public:
-	int windownWidth = 1000;
-	int windownHeight = 700;
-	sf::Text inputName;
-	string lableInputName;
-	ListViewHighScore listView;
 	ComponentHighScore();
-	Score score;
 	void run(int);
 private:
+	int windownWidth = 1000;
+	int windownHeight = 700;
 	string convertToString(int i)
 	{
 		stringstream ss;
@@ -24,6 +20,10 @@ private:
 	sf::RenderWindow hWindow;
 	void processEvent(int);
 	string playerInput = "";
+	sf::Text inputName;
+	string lableInputName;
+	ListViewHighScore listView;
+	Score score;
 	
 };
 

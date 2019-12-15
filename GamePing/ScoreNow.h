@@ -3,9 +3,10 @@
 #include <SFML/Graphics.hpp>
 class ScoreNow
 {
+private:
+	sf::Font font;
 public:
 	sf::Text scoreNow;
-	sf::Font font;
 	sf::Sprite iconScore;
 	ScoreNow();
 	~ScoreNow();

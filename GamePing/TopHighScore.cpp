@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "TopHighScore.h"
 
-bool checkTrash(char x) {
+bool TopHighScore:: checkTrash(char x) {
 	if ((x=='[')||(x==']'))
 	{
 		return true;
@@ -17,7 +17,7 @@ bool checkTrash(char x) {
 	return false;
 }
 
-vector<Score*> convertFromString(string S) {
+vector<Score*> TopHighScore::convertFromString(string S) {
 	
 	vector<Score*> vt;
 	string oject;
@@ -25,7 +25,7 @@ vector<Score*> convertFromString(string S) {
 	{
 		if (S[i] == ',')
 		{
-			cout << oject;
+			//cout << oject;
 			string word="";
 			string name;
 			for (int i = 0; i < oject.length(); i++)
@@ -67,7 +67,7 @@ vector<Score*> TopHighScore::getHighScore()
 	if (response.getStatus() == sf::Http::Response::Ok)
 	{
 		
-		f << response.getBody();
+	//	f << response.getBody();
 		f.close();
 		return convertFromString(response.getBody());
 	}

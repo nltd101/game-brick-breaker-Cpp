@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Score.h"
+#include "TopHighScore.h"
 
 string Score::get_name()
 {
@@ -43,6 +44,41 @@ string Score::pushScore()
 	}
 	else
 	{
+		fstream f("highscore.txt", ios::out | ios::in);
+		string bodyOfFile;
+		getline(f, bodyOfFile);
+		f.close();
+		vector<Score*> listScore = TopHighScore().convertFromString(bodyOfFile);
+		cout << bodyOfFile;
+		vector<Score*> listNew;
+		fstream f2("highscore.txt", ios::out);
+		int count = 0;
+		bool check = true;
+		for (auto i:listScore)
+		{
+			
+			cout << i->get_score() << " " << this->get_score()<<endl;
+			if ((i->get_score()<this->get_score())||(i->get_score().length()<this->get_score().length()))
+			{
+				if ((check)&&(count < 5))
+				{
+					count++;
+					check = false;
+					//cout << this->get_name() << " " << this->get_score() << "," << endl;
+					f2 << this->get_name() << " " << this->get_score() << ",";
+					//listScore.pop_back();
+				}
+			}
+			if (count<5)
+			{
+				count++;
+				//cout << i->get_name() << " " << i->get_score() << ","<<endl;
+				f2 << i->get_name() << " " << i->get_score() << ",";
+			}
+				
+			
+		}
+		f2.close();
 		return "fail";
 	}
 	

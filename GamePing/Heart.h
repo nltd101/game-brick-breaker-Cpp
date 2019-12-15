@@ -5,8 +5,9 @@ class Heart
 {
 public:
 	sf::Text heart;
-	sf::Font font;
 	Heart();
 	~Heart();
+private:
+	sf::Font font;
 };
 

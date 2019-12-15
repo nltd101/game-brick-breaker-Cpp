@@ -76,3 +76,8 @@ void Menu::MoveDown()
 		menu[selectedItem].setFillColor(sf::Color::Red);
 	}
 }
+
+int Menu::getPressedItem()
+{
+	return selectedItem;
+}

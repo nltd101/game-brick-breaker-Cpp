@@ -82,7 +82,7 @@ void ComponentHighScore::processEvent(int score)
 		}
 		else
 		{
-			if (event.type == sf::Event::TextEntered)
+			if (event.type == sf::Event::KeyPressed)
 			{
 				hWindow.close();
 			}
