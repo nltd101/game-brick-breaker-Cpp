@@ -207,43 +207,28 @@ void Game::update(int mode)
 		if (mode == 1)
 		{
 			float deltaTime = clock.restart().asSeconds();
-			/*float i = 1.0;
-			int xpaddle = left.Paddle.getPosition().x;
-			int ypaddle = left.Paddle.getPosition().y;
-			int xball = pong.ball.getPosition().x;
-			int yball = pong.ball.getPosition().y;
-			int height = 250;
-			if ((pong.ball.getPosition().y > height)&&(cos(ballAngle)>0))
+			// Move the player's paddle
+			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) &&
+				(left.Paddle.getPosition().x - paddleSize.x / 2 > 10.f))
 			{
-				int distance = ((gameHeight - yball) * tan(ballAngle) - xpaddle + xball);
-				if (distance<paddleSize.x/2)
-				{
-					distance = -distance;
-				}
-				if (distance > gameWidth-paddleSize.x / 2)
-				{
-					distance = gameWidth-(distance-(gameWidth-paddleSize.x/2));
-				}
-				left.Paddle.move((distance* ballSpeed*cos(ballAngle) / (gameHeight - yball)), 0.f);
-				//left.Paddle.move(1.f, 0.f);
+				left.Paddle.move(-paddleSpeed * deltaTime, 0.f);
 			}
-			*/
-			if (((rightPaddleSpeed < 0.f) && (left.Paddle.getPosition().x - paddleSize.x / 2 > 10.f)) ||
-				((rightPaddleSpeed > 0.f) && (left.Paddle.getPosition().x + paddleSize.x / 2 < gameWidth - Backsize.x + 10.f)))
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) &&
+				(left.Paddle.getPosition().x + paddleSize.x / 2 < gameWidth - Backsize.x))
 			{
-				left.Paddle.move(rightPaddleSpeed* deltaTime, 0.f);
+				left.Paddle.move(paddleSpeed * deltaTime, 0.f);
+			}*/
+			if (pong.ball.getPosition().x-paddleSize.x/2<=0)
+			{
+				left.Paddle.setPosition(paddleSize.x/2, gameHeight - paddleSize.y);
 			}
-			//update ai
-			if (AITimer.getElapsedTime() > AITime)
-			{
-				AITimer.restart();
-				if (pong.ball.getPosition().x + pong.ballRadius > left.Paddle.getPosition().x + paddleSize.y / 2)
-					rightPaddleSpeed = paddleSpeed;
-				else if (pong.ball.getPosition().x - pong.ballRadius < left.Paddle.getPosition().x - paddleSize.y / 2)
-					rightPaddleSpeed = -paddleSpeed;
+			else
+				if (pong.ball.getPosition().x + paddleSize.x / 2>gameWidth-Backsize.x)
+				{
+					left.Paddle.setPosition(pong.ball.getPosition().x - paddleSize.x / 2, gameHeight - paddleSize.y);
+				}
 				else
-					rightPaddleSpeed = 0.f;
-			}
+				left.Paddle.setPosition(pong.ball.getPosition().x,gameHeight - paddleSize.y);
 			std::string out_string;
 			std::stringstream ss;
 			ss << score;
@@ -253,9 +238,9 @@ void Game::update(int mode)
 			bool check = true;
 			for (int i = 0; i < 9; i++)
 			{
-				for (int j = 0; j < 10; j++) {
-					if (positionBrickLevel[i][j] != 0)
-					{
+				for (int j = 0; j < 10; j++)
+				{
+					if (positionBrickLevel[i][j] != 0) {
 						if (check)
 						{
 							int xbrick = 45 + 90 * i;
@@ -263,20 +248,24 @@ void Game::update(int mode)
 							if ((this->pong.ball.getPosition().x > xbrick - 45) && (this->pong.ball.getPosition().x < xbrick + 45))//o giua ben phai va trai
 							{
 								//cham duoic gach
-								if ((this->pong.ball.getPosition().y + this->pong.ballRadius >= ybrick - 15)
-									&& ((this->pong.ball.getPosition().y + this->pong.ballRadius <= ybrick)))
+								if ((this->pong.ball.getPosition().y + this->pong.ballRadius > ybrick - 15)
+									&& ((this->pong.ball.getPosition().y + this->pong.ballRadius < ybrick)))
 								{
-									ballAngle = pi - ballAngle;
-									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick - 15);
+
+									ballAngle = pi - (ballAngle);
+									//this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y - 0.1f);
+									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick - 15 - pong.ballRadius);
 									processCollision(i, j);
 									check = false;
 								}
 								//cham tren gach
-								if ((this->pong.ball.getPosition().y - this->pong.ballRadius >= ybrick)
-									&& ((this->pong.ball.getPosition().y - this->pong.ballRadius <= ybrick + 15)))
+								if ((this->pong.ball.getPosition().y - this->pong.ballRadius > ybrick)
+									&& ((this->pong.ball.getPosition().y - this->pong.ballRadius < ybrick + 15)))
 								{
-									ballAngle = pi - ballAngle;
-									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick + 15);
+
+									ballAngle = pi - (ballAngle);
+
+									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick + 15 + pong.ballRadius);
 									processCollision(i, j);
 									check = false;
 								}
@@ -285,19 +274,19 @@ void Game::update(int mode)
 							{
 								//cham trai gach
 								if ((this->pong.ball.getPosition().x + this->pong.ballRadius > xbrick - 45)
-									&& ((this->pong.ball.getPosition().x + this->pong.ballRadius < xbrick)))
+									&& ((this->pong.ball.getPosition().x + this->pong.ballRadius < xbrick - 10)))
 								{
 									ballAngle = -ballAngle;
-									this->pong.ball.setPosition(xbrick - 45, this->pong.ball.getPosition().y);
+									this->pong.ball.setPosition(xbrick - 45 - pong.ballRadius, this->pong.ball.getPosition().y);
 									processCollision(i, j);
 									check = false;
 								}
 								//cham phai gach
-								if ((this->pong.ball.getPosition().x - this->pong.ballRadius > xbrick)
+								if ((this->pong.ball.getPosition().x - this->pong.ballRadius > xbrick + 10)
 									&& ((this->pong.ball.getPosition().x - this->pong.ballRadius < xbrick + 45)))
 								{
 									ballAngle = -ballAngle;
-									this->pong.ball.setPosition(xbrick + 45, this->pong.ball.getPosition().y);
+									this->pong.ball.setPosition(xbrick + 45 + pong.ballRadius, this->pong.ball.getPosition().y);
 									processCollision(i, j);
 									check = false;
 								}
@@ -312,7 +301,7 @@ void Game::update(int mode)
 			for (vector<item*>::iterator i = listFaltItem.begin(); i != listFaltItem.end(); i++)
 			{
 				(*i)->move(0.f, 2.f);
-				if ((*i)->getPosition().y > gameHeight - paddleSize.y)
+				if ((*i)->getPosition().y > gameHeight - paddleSize.y - pong.ballRadius)
 				{
 					if (((*i)->getPosition().x < left.Paddle.getPosition().x + paddleSize.x / 2) &&
 						((*i)->getPosition().x > left.Paddle.getPosition().x - paddleSize.x / 2))
@@ -323,10 +312,25 @@ void Game::update(int mode)
 							life++;
 							break;
 						case 3:
-							paddleSize.x += 50;
+							if (paddleSize.x < 400)
+							{
+								paddleSize.x += 50;
+							}
+							sound_Brick.sound_brick.loadFromFile("music/Gold.wav");
+							sound_Brick.sound.play();
 							break;
 						case 4:
 							score += 10 + rand() % 11;
+							sound_Brick.sound_brick.loadFromFile("music/Gold.wav");
+							sound_Brick.sound.play();
+							break;
+						case 5:
+							if (paddleSize.x > 100)
+							{
+								paddleSize.x -= 50;
+							}
+							sound_Brick.sound_brick.loadFromFile("music/Gold.wav");
+							sound_Brick.sound.play();
 							break;
 						default:
 							break;
@@ -340,7 +344,7 @@ void Game::update(int mode)
 			if (this->pong.ball.getPosition().x - this->pong.ballRadius < 0.f)
 			{
 				ballAngle = -ballAngle;
-				this->pong.ball.setPosition(this->pong.ballRadius + 0.1f, this->pong.ball.getPosition().y);
+				this->pong.ball.setPosition(this->pong.ballRadius + 0.01f, this->pong.ball.getPosition().y);
 			}
 			if (this->pong.ball.getPosition().x + this->pong.ballRadius > gameWidth - Backsize.x + 15.f)
 			{
@@ -350,7 +354,7 @@ void Game::update(int mode)
 			if (this->pong.ball.getPosition().y - this->pong.ballRadius < 0.f)
 			{
 				ballAngle = pi - ballAngle;
-				this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ballRadius + 0.1f);
+				this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ballRadius + 0.01f);
 			}
 			std::string out_string1;
 			std::stringstream st;
@@ -360,12 +364,15 @@ void Game::update(int mode)
 			if (this->pong.ball.getPosition().y + this->pong.ballRadius > gameHeight)
 			{
 				isPlaying = false;
+				cout << ballSpeed;
+				sound_Brick.sound_brick.loadFromFile("music/Fail.wav");
+				sound_Brick.sound.play();
 				ballSpeed = 300.f;
-				pong.ball.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y - this->pong.ballRadius - 0.1f);
+				pong.ball.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y - this->pong.ballRadius - 0.01f);
 				left.Paddle.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y / 2);
 				paddleSize = paddleSizeConst;
 				life = life - 1;
-
+				shadow.listSprite.clear();
 			}
 			if (life == 0)
 			{
@@ -379,14 +386,15 @@ void Game::update(int mode)
 				this->pong.ball.getPosition().y + this->pong.ballRadius <= left.Paddle.getPosition().y + paddleSize.y / 2)
 			{
 				int delta = this->pong.ball.getPosition().x - this->left.Paddle.getPosition().x;
-				if(ballSpeed < 1250)
+				if (ballSpeed < 1250)
 				{
 					ballSpeed += increase;
 				}
 				ballAngle = pi - ballAngle - ((delta) * 30 * pi) / (paddleSize.x * 90);
-				pong.ball.setOutlineColor(sf::Color(rand() % 150, rand() % 150, rand() % 150));
-				pong.ball.setFillColor(sf::Color(rand() % 225, rand() % 255, rand() % 255));
+				pong.ball.setFillColor(sf::Color(rand() % 150, rand() % 150, rand() % 150));
 				this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->left.Paddle.getPosition().y - this->pong.ballRadius - paddleSize.y / 2 - 0.1f);
+				sound_Brick.sound_brick.loadFromFile("music/Paddle.wav");
+				sound_Brick.sound.play();
 			}
 		}
 	}
@@ -639,7 +647,10 @@ void Game::rules_game()
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
+			{
 				window.close();
+				exit;
+			}
 		}
 
 		window.clear();
@@ -662,8 +673,11 @@ void Game::processEvents()
 	sf::Event event;
 	while (mWindow.pollEvent(event))
 	{
-		if (event.type== sf::Event::Closed)
-			mWindow.close();
+		if (event.type == sf::Event::Closed)
+		{
+			exit(0);
+			mWindow.close(); 
+		}
 		if ((isPlaying == false) && isFirstTime == true)
 		{
 			switch (event.type)
@@ -722,7 +736,9 @@ void Game::processEvents()
 						rules_game();
 						break;
 					case 4:
+						exit(0);
 						mWindow.close();
+						
 						break;
 					default:
 						break;
