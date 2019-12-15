@@ -197,8 +197,7 @@ void Game::update(int mode)
 					ballSpeed += increase;
 				}
 				ballAngle = pi - ballAngle -((delta)* 30* pi) / (paddleSize.x*90);
-				pong.ball.setOutlineColor(sf::Color(rand() % 150, rand() % 150, rand() % 150));
-				pong.ball.setFillColor(sf::Color(rand() % 225, rand() % 255, rand() % 255));
+				pong.ball.setFillColor(sf::Color(rand() % 150, rand() % 150, rand() % 150));
 				this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->left.Paddle.getPosition().y - this->pong.ballRadius - paddleSize.y / 2 - 0.1f);
 				sound_Brick.sound_brick.loadFromFile("music/Paddle.wav");
 				sound_Brick.sound.play();
