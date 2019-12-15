@@ -3,7 +3,7 @@
 
 Brick::Brick()
 {
-	BRICK.setSize(brickSize - sf::Vector2f(3, 3));
+	BRICK.setSize(brickSize);
 	BRICK.setOutlineThickness(2);
 	BRICK.setOutlineColor(sf::Color(238, 232, 170));
 	//BRICK.setOutlineColor(sf::Color::White);

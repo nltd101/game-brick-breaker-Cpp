@@ -112,4 +112,13 @@ void GenerateMapBaseLevel::GenerateItem(int a[9][10])
 			countheart--;
 		}
 	}
+	for (int i = 0; i < 5; i++)
+	{
+		int icoin = rand() % 9;
+		int jcoin = rand() % 10;
+		if (a[icoin][jcoin] != 0)
+		{
+			a[icoin][jcoin] = 5;
+		}
+	}
 };

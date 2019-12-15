@@ -20,10 +20,12 @@
 #include "GenerateMapBaseLevel.h"
 #include "SaveTraceBall.h"
 #include "SoundBrick.h"
+#include "MinusPaddle.h"
 using namespace sf;
 class Game
 {
 public:
+	MinusPaddle minus;
 	SoundBrick sound_Brick;
 	int countBrick;
 	int level = 1;

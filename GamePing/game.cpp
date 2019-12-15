@@ -14,7 +14,7 @@ Game::Game()
 	ballSpeed = 300.f;
 	ballAngle = 0.f;
 	increase = 50.f;
-	pi = 3.14159f;
+	pi = 3.14159265359f;
 	isFirstTime = true;
 }
 void Game::update(int mode)
@@ -41,49 +41,64 @@ void Game::update(int mode)
 			out_string = ss.str();
 			text1.scoreNow.setString(out_string);
 			out_string = "";
+			bool check = true;
 			for (int i = 0; i < 9; i++)
 			{
-				for (int j = 0; j < 10; j++) {
-					if (positionBrickLevel[i][j] != 0)
-					{
-						int xbrick = 45 + 90 * i;
-						int ybrick = 15 + 30 * j;
-						if ((this->pong.ball.getPosition().x >= xbrick - 45) && (this->pong.ball.getPosition().x <= xbrick + 45))//o giua ben phai va trai
+				for (int j = 0; j < 10; j++) 
+				{
+					if (positionBrickLevel[i][j] != 0) {
+						if (check)
 						{
-							//cham duoic gach
-							if ((this->pong.ball.getPosition().y + this->pong.ballRadius >= ybrick - 15)
-								&& ((this->pong.ball.getPosition().y + this->pong.ballRadius <= ybrick + 15)))
+							int xbrick = 45 + 90 * i;
+							int ybrick = 15 + 30 * j;
+							if ((this->pong.ball.getPosition().x > xbrick - 45) && (this->pong.ball.getPosition().x < xbrick + 45))//o giua ben phai va trai
 							{
-								ballAngle = pi - ballAngle;
-								this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y - 0.1f);
-								processCollision(i, j);
+								//cham duoic gach
+								if ((this->pong.ball.getPosition().y + this->pong.ballRadius > ybrick - 15)
+									&& ((this->pong.ball.getPosition().y + this->pong.ballRadius < ybrick)))
+								{
+									if (cos(ballAngle) > 0)
+										ballAngle = pi - (ballAngle + 0.01f);
+									else
+										ballAngle = pi - (ballAngle-0.01f);
+									//this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y - 0.1f);
+									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick - 15);
+									processCollision(i, j);
+									check = false;
+								}
+								//cham tren gach
+								if ((this->pong.ball.getPosition().y - this->pong.ballRadius > ybrick)
+									&& ((this->pong.ball.getPosition().y - this->pong.ballRadius < ybrick + 15)))
+								{
+									if (cos(ballAngle) > 0)
+										ballAngle = pi - (ballAngle + 0.01f);
+									else
+										ballAngle = pi - (ballAngle - 0.01f);
+									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick + 15);
+									processCollision(i, j);
+									check = false;
+								}
 							}
-							//cham tren gach
-							if ((this->pong.ball.getPosition().y - this->pong.ballRadius >= ybrick - 15)
-								&& ((this->pong.ball.getPosition().y - this->pong.ballRadius <= ybrick + 15)))
+							if ((this->pong.ball.getPosition().y > ybrick - 15) && (this->pong.ball.getPosition().y < ybrick + 15))//o giua tren va duoi
 							{
-								ballAngle = pi - ballAngle;
-								this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y + 0.1f);
-								processCollision(i, j);
-							}
-						}
-						if ((this->pong.ball.getPosition().y >= ybrick - 15) && (this->pong.ball.getPosition().y <= ybrick + 15))//o giua tren va duoi
-						{
-							//cham trai gach
-							if ((this->pong.ball.getPosition().x + this->pong.ballRadius >= xbrick - 45)
-								&& ((this->pong.ball.getPosition().x + this->pong.ballRadius <= xbrick + 45)))
-							{
-								ballAngle = -ballAngle;
-								this->pong.ball.setPosition(this->pong.ball.getPosition().x - 0.1f, this->pong.ball.getPosition().y);
-								processCollision(i, j);
-							}
-							//cham phai gach
-							if ((this->pong.ball.getPosition().x - this->pong.ballRadius >= xbrick - 45)
-								&& ((this->pong.ball.getPosition().x - this->pong.ballRadius <= xbrick + 45)))
-							{
-								ballAngle = -ballAngle;
-								this->pong.ball.setPosition(this->pong.ball.getPosition().x + 0.1f, this->pong.ball.getPosition().y);
-								processCollision(i, j);
+								//cham trai gach
+								if ((this->pong.ball.getPosition().x + this->pong.ballRadius > xbrick - 45)
+									&& ((this->pong.ball.getPosition().x + this->pong.ballRadius < xbrick-10)))
+								{
+									ballAngle = -ballAngle;
+									this->pong.ball.setPosition(xbrick - 45-0.1f, this->pong.ball.getPosition().y);
+									processCollision(i, j);
+									check = false;
+								}
+								//cham phai gach
+								if ((this->pong.ball.getPosition().x - this->pong.ballRadius > xbrick+10)
+									&& ((this->pong.ball.getPosition().x - this->pong.ballRadius < xbrick + 45)))
+								{
+									ballAngle = -ballAngle;
+									this->pong.ball.setPosition(xbrick + 45+0.1f, this->pong.ball.getPosition().y);
+									processCollision(i, j);
+									check = false;
+								}
 							}
 						}
 					}
@@ -105,13 +120,24 @@ void Game::update(int mode)
 						case 2:
 							life++;
 							break;
-						case 3: 
-							paddleSize.x += 50;
+						case 3:
+							if (paddleSize.x < 400)
+							{
+								paddleSize.x += 50;
+							}
 							sound_Brick.sound_brick.loadFromFile("music/Gold.wav");
 							sound_Brick.sound.play();
 							break;
 						case 4:
 							score += 10 + rand() % 11;
+							sound_Brick.sound_brick.loadFromFile("music/Gold.wav");
+							sound_Brick.sound.play();
+							break;
+						case 5:
+							if (paddleSize.x > 100)
+							{
+								paddleSize.x -= 50;
+							}
 							sound_Brick.sound_brick.loadFromFile("music/Gold.wav");
 							sound_Brick.sound.play();
 							break;
@@ -127,7 +153,7 @@ void Game::update(int mode)
 			if (this->pong.ball.getPosition().x - this->pong.ballRadius < 0.f)
 			{
 				ballAngle = -ballAngle;
-				this->pong.ball.setPosition(this->pong.ballRadius + 0.1f, this->pong.ball.getPosition().y);
+				this->pong.ball.setPosition(this->pong.ballRadius + 0.01f, this->pong.ball.getPosition().y);
 			}
 			if (this->pong.ball.getPosition().x + this->pong.ballRadius > gameWidth - Backsize.x + 15.f)
 			{
@@ -137,7 +163,7 @@ void Game::update(int mode)
 			if (this->pong.ball.getPosition().y - this->pong.ballRadius < 0.f)
 			{
 				ballAngle = pi - ballAngle;
-				this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ballRadius + 0.1f);
+				this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ballRadius + 0.01f);
 			}
 			std::string out_string1;
 			std::stringstream st;
@@ -147,10 +173,11 @@ void Game::update(int mode)
 			if (this->pong.ball.getPosition().y + this->pong.ballRadius > gameHeight)
 			{
 				isPlaying = false;
+				cout << ballSpeed;
 				sound_Brick.sound_brick.loadFromFile("music/Fail.wav");
 				sound_Brick.sound.play();
 				ballSpeed = 300.f;
-				pong.ball.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y - this->pong.ballRadius - 0.1f);
+				pong.ball.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y - this->pong.ballRadius - 0.01f);
 				left.Paddle.setPosition((gameWidth - Backsize.x) / 2, gameHeight - paddleSize.y / 2);
 				paddleSize = paddleSizeConst;
 				life = life - 1;
@@ -167,7 +194,10 @@ void Game::update(int mode)
 				this->pong.ball.getPosition().y + this->pong.ballRadius <= left.Paddle.getPosition().y + paddleSize.y / 2)
 			{
 				int delta = this->pong.ball.getPosition().x - this->left.Paddle.getPosition().x;
-				ballSpeed += increase;
+				if (ballSpeed<1250)
+				{
+					ballSpeed += increase;
+				}
 				ballAngle = pi - ballAngle -((delta)* 30* pi) / (paddleSize.x*90);
 				pong.ball.setOutlineColor(sf::Color(rand() % 150, rand() % 150, rand() % 150));
 				pong.ball.setFillColor(sf::Color(rand() % 225, rand() % 255, rand() % 255));
@@ -223,49 +253,57 @@ void Game::update(int mode)
 			out_string = ss.str();
 			text1.scoreNow.setString(out_string);
 			out_string = "";
+			bool check = true;
 			for (int i = 0; i < 9; i++)
 			{
 				for (int j = 0; j < 10; j++) {
 					if (positionBrickLevel[i][j] != 0)
 					{
-						int xbrick = 45 + 90 * i;
-						int ybrick = 15 + 30 * j;
-						if ((this->pong.ball.getPosition().x >= xbrick - 45) && (this->pong.ball.getPosition().x <= xbrick + 45))//o giua ben phai va trai
+						if (check)
 						{
-							//cham duoic gach
-							if ((this->pong.ball.getPosition().y + this->pong.ballRadius >= ybrick - 15)
-								&& ((this->pong.ball.getPosition().y + this->pong.ballRadius <= ybrick + 15)))
+							int xbrick = 45 + 90 * i;
+							int ybrick = 15 + 30 * j;
+							if ((this->pong.ball.getPosition().x > xbrick - 45) && (this->pong.ball.getPosition().x < xbrick + 45))//o giua ben phai va trai
 							{
-								ballAngle = pi - ballAngle;
-								this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y - 0.1f);
-								processCollision(i, j);
+								//cham duoic gach
+								if ((this->pong.ball.getPosition().y + this->pong.ballRadius >= ybrick - 15)
+									&& ((this->pong.ball.getPosition().y + this->pong.ballRadius <= ybrick)))
+								{
+									ballAngle = pi - ballAngle;
+									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick - 15);
+									processCollision(i, j);
+									check = false;
+								}
+								//cham tren gach
+								if ((this->pong.ball.getPosition().y - this->pong.ballRadius >= ybrick)
+									&& ((this->pong.ball.getPosition().y - this->pong.ballRadius <= ybrick + 15)))
+								{
+									ballAngle = pi - ballAngle;
+									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick + 15);
+									processCollision(i, j);
+									check = false;
+								}
 							}
-							//cham tren gach
-							if ((this->pong.ball.getPosition().y - this->pong.ballRadius >= ybrick - 15)
-								&& ((this->pong.ball.getPosition().y - this->pong.ballRadius <= ybrick + 15)))
+							if ((this->pong.ball.getPosition().y > ybrick - 15) && (this->pong.ball.getPosition().y < ybrick + 15))//o giua tren va duoi
 							{
-								ballAngle = pi - ballAngle;
-								this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y + 0.1f);
-								processCollision(i, j);
-							}
-						}
-						if ((this->pong.ball.getPosition().y >= ybrick - 15) && (this->pong.ball.getPosition().y <= ybrick + 15))//o giua tren va duoi
-						{
-							//cham trai gach
-							if ((this->pong.ball.getPosition().x + this->pong.ballRadius >= xbrick - 45)
-								&& ((this->pong.ball.getPosition().x + this->pong.ballRadius <= xbrick + 45)))
-							{
-								ballAngle = -ballAngle;
-								this->pong.ball.setPosition(this->pong.ball.getPosition().x - 0.1f, this->pong.ball.getPosition().y);
-								processCollision(i, j);
-							}
-							//cham phai gach
-							if ((this->pong.ball.getPosition().x - this->pong.ballRadius >= xbrick - 45)
-								&& ((this->pong.ball.getPosition().x - this->pong.ballRadius <= xbrick + 45)))
-							{
-								ballAngle = -ballAngle;
-								this->pong.ball.setPosition(this->pong.ball.getPosition().x + 0.1f, this->pong.ball.getPosition().y);
-								processCollision(i, j);
+								//cham trai gach
+								if ((this->pong.ball.getPosition().x + this->pong.ballRadius > xbrick - 45)
+									&& ((this->pong.ball.getPosition().x + this->pong.ballRadius < xbrick)))
+								{
+									ballAngle = -ballAngle;
+									this->pong.ball.setPosition(xbrick - 45, this->pong.ball.getPosition().y);
+									processCollision(i, j);
+									check = false;
+								}
+								//cham phai gach
+								if ((this->pong.ball.getPosition().x - this->pong.ballRadius > xbrick)
+									&& ((this->pong.ball.getPosition().x - this->pong.ballRadius < xbrick + 45)))
+								{
+									ballAngle = -ballAngle;
+									this->pong.ball.setPosition(xbrick + 45, this->pong.ball.getPosition().y);
+									processCollision(i, j);
+									check = false;
+								}
 							}
 						}
 					}
@@ -344,7 +382,10 @@ void Game::update(int mode)
 				this->pong.ball.getPosition().y + this->pong.ballRadius <= left.Paddle.getPosition().y + paddleSize.y / 2)
 			{
 				int delta = this->pong.ball.getPosition().x - this->left.Paddle.getPosition().x;
-				ballSpeed += increase;
+				if(ballSpeed < 1250)
+				{
+					ballSpeed += increase;
+				}
 				ballAngle = pi - ballAngle - ((delta) * 30 * pi) / (paddleSize.x * 90);
 				pong.ball.setOutlineColor(sf::Color(rand() % 150, rand() % 150, rand() % 150));
 				pong.ball.setFillColor(sf::Color(rand() % 225, rand() % 255, rand() % 255));
@@ -370,6 +411,11 @@ void Game::processCollision(int i, int j)
 		break;
 	case 4:
 		item = new PlusPoint();
+		item->setPosition(50 + 90 * i, 20 + 30 * j);
+		listFaltItem.push_back(item);
+		break;
+	case 5:
+		item = new MinusPaddle();
 		item->setPosition(50 + 90 * i, 20 + 30 * j);
 		listFaltItem.push_back(item);
 		break;
@@ -473,6 +519,7 @@ void Game::render()
 			GenerateMapBaseLevel().setMapLevel(positionBrickLevel, level);
 			this->pong.ball.setPosition(gameWidth / 2, gameHeight - paddleSize.y - pong.ballRadius - 0.1f);
 			ballAngle = (0.7 + ((double)(rand() % 4)) / 10) * pi;
+			ballSpeed = 300.f;
 		}
 		for (vector<item*>::iterator i = listFaltItem.begin(); i != listFaltItem.end(); i++)
 		{
