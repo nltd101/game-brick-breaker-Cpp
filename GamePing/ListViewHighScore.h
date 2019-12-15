@@ -6,6 +6,7 @@ class ListViewHighScore
 {
 	int selectedItem;
 	sf::Font font;
+	sf::Font font1;
 	vector<sf::Text*> listView;
 	sf::Text txtHighscore;
 public:

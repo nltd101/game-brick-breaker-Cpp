@@ -2,6 +2,7 @@
 #include "ListViewHighScore.h"
 #include "SFML/Graphics.hpp"
 #include "Score.h"
+#include "IconWindows.h"
 class ComponentHighScore
 {
 public:
