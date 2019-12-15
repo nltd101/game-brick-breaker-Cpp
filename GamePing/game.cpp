@@ -57,12 +57,10 @@ void Game::update(int mode)
 								if ((this->pong.ball.getPosition().y + this->pong.ballRadius > ybrick - 15)
 									&& ((this->pong.ball.getPosition().y + this->pong.ballRadius < ybrick)))
 								{
-									if (cos(ballAngle) > 0)
-										ballAngle = pi - (ballAngle + 0.01f);
-									else
-										ballAngle = pi - (ballAngle-0.01f);
+									
+										ballAngle = pi - (ballAngle);
 									//this->pong.ball.setPosition(this->pong.ball.getPosition().x, this->pong.ball.getPosition().y - 0.1f);
-									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick - 15);
+									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick - 15-pong.ballRadius);
 									processCollision(i, j);
 									check = false;
 								}
@@ -70,11 +68,10 @@ void Game::update(int mode)
 								if ((this->pong.ball.getPosition().y - this->pong.ballRadius > ybrick)
 									&& ((this->pong.ball.getPosition().y - this->pong.ballRadius < ybrick + 15)))
 								{
-									if (cos(ballAngle) > 0)
-										ballAngle = pi - (ballAngle + 0.01f);
-									else
-										ballAngle = pi - (ballAngle - 0.01f);
-									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick + 15);
+								
+										ballAngle = pi - (ballAngle );
+								
+									this->pong.ball.setPosition(this->pong.ball.getPosition().x, ybrick + 15+pong.ballRadius);
 									processCollision(i, j);
 									check = false;
 								}
@@ -86,7 +83,7 @@ void Game::update(int mode)
 									&& ((this->pong.ball.getPosition().x + this->pong.ballRadius < xbrick-10)))
 								{
 									ballAngle = -ballAngle;
-									this->pong.ball.setPosition(xbrick - 45-0.1f, this->pong.ball.getPosition().y);
+									this->pong.ball.setPosition(xbrick - 45-pong.ballRadius, this->pong.ball.getPosition().y);
 									processCollision(i, j);
 									check = false;
 								}
@@ -95,7 +92,7 @@ void Game::update(int mode)
 									&& ((this->pong.ball.getPosition().x - this->pong.ballRadius < xbrick + 45)))
 								{
 									ballAngle = -ballAngle;
-									this->pong.ball.setPosition(xbrick + 45+0.1f, this->pong.ball.getPosition().y);
+									this->pong.ball.setPosition(xbrick + 45+pong.ballRadius, this->pong.ball.getPosition().y);
 									processCollision(i, j);
 									check = false;
 								}
