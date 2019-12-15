@@ -7,8 +7,11 @@ ComponentHighScore::ComponentHighScore()
 void ComponentHighScore::run(int score)
 {
 	hWindow.setVerticalSyncEnabled(true);
+	iconHighScore(hWindow);
+	
 	lableInputName = "Your score is " + convertToString(score) + ", please input your name: ";
 	sf::Font font;
+	
 	if (!font.loadFromFile("resources/sansation.ttf"))
 	{
 		//handle error
@@ -23,7 +26,6 @@ void ComponentHighScore::run(int score)
 		processEvent(score);
 		hWindow.clear(sf::Color(238, 232, 170));
 		listView.draw(hWindow);
-		
 		if (score != 0)
 		{
 			hWindow.draw(inputName);
@@ -76,6 +78,13 @@ void ComponentHighScore::processEvent(int score)
 					hWindow.close();
 					
 				}
+			}
+		}
+		else
+		{
+			if (event.type == sf::Event::TextEntered)
+			{
+				hWindow.close();
 			}
 		}
 	}

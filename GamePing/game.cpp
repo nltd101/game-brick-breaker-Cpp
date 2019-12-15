@@ -485,7 +485,7 @@ void Game::drawBrick()
 }
 void Game::render()
 {
-	mWindow.clear(Color(238, 232, 170));
+	
 	// Draw
 	Sprite mHeart(hide_heart.heart);
 	mHeart.setPosition(825, 150);
@@ -502,6 +502,7 @@ void Game::render()
 	text.message.setString(out_string);
 	if (isPlaying)
 	{
+		mWindow.clear(Color(238, 232, 170));
 		//mWindow.draw(mBackground);
 		mWindow.draw(left.Paddle);
 		shadow.newMove(pong.ball.getPosition().x, pong.ball.getPosition().y, mWindow);
@@ -530,10 +531,12 @@ void Game::render()
 	{
 		if (isFirstTime == true)
 		{
+			mWindow.clear(Color(57, 57, 187));
 			list.draw(mWindow);
 		}
 		else
 		{
+			mWindow.clear(Color(238, 232, 170));
 			mWindow.draw(left.Paddle);
 			mWindow.draw(pong.ball);
 			mWindow.draw(background.backgroundInfo);
@@ -603,9 +606,9 @@ void Game::rules_game()
 	texture.loadFromFile("img/Screen.jpg");
 	Sprite s1(texture);
 	Font font3;
-	font3.loadFromFile("resources/Font1.ttf");
+	font3.loadFromFile("resources/zorque.ttf");
 	Text text("RULES AND HOW TO PLAY", font3);
-	text.setPosition(100, 30);
+	text.setPosition(150, 30);
 	text.setFillColor(Color::Red);
 	text.setCharacterSize(50);
 	text.setOutlineThickness(1);
@@ -613,23 +616,23 @@ void Game::rules_game()
 	Text text1("RULES", font3);
 	text1.setPosition(30, 100);
 	text1.setFillColor(Color::Red);
-	text1.setCharacterSize(30);
+	text1.setCharacterSize(50);
 	text1.setStyle(Text::Underlined | Text::Italic);
 	Font font4;
-	font4.loadFromFile("resources/Font.ttf");
+	font4.loadFromFile("resources/sansation.ttf");
 	// Neu luat le choi game
-	Text text2("1. Players move to catch the ball.\n2. When the ball falls but the player have not catched it, the player lost \n1 turn. After 3 rounds, the player's result is saved.\n3. During the game, the player who has eaten the heart is given \n 1 more turn.", font4);
-	text2.setPosition(30, 150);
-	text2.setFillColor(Color::Yellow);
+	Text text2("1. Players move to catch the ball.\n2. When the ball falls but the player have not\n catched it, the player lost 1 turn. After 3 rounds, \nthe player's result is saved.\n3. During the game, the player who has eaten \nthe heart is given 1 more turn.", font4);
+	text2.setPosition(30, 165);
+	text2.setFillColor(Color::Black);
 	text2.setCharacterSize(45);
 	Text text3("HOW TO PLAY", font3);
-	text3.setPosition(30, 430);
+	text3.setPosition(30, 470);
 	text3.setFillColor(Color::Red);
-	text3.setCharacterSize(30);
+	text3.setCharacterSize(50);
 	text3.setStyle(Text::Underlined | Text::Italic);
-	Text text4(" - The player uses the A, D buttons to move the slider right and left.", font4);
-	text4.setPosition(30, 480);
-	text4.setFillColor(Color::Yellow);
+	Text text4(" - The player uses the A, D buttons to move the \nslider right and left.", font4);
+	text4.setPosition(30, 530);
+	text4.setFillColor(Color::Black);
 	text4.setCharacterSize(45);
 	while (window.isOpen())
 	{
